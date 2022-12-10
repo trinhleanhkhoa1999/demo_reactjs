@@ -8,11 +8,25 @@ export default class MyComponent extends Component {
     age: 23,
     address: "Hoi dan it",
   };
+  handleOnClick = () => {
+    console.log("  My name is ", this.state.name);
+    this.setState({
+      name: "be bi",
+      age: Math.floor(Math.random() * 100 + 1),
+    });
+  };
   //JSX code javascript
   render() {
     return (
       <div>
-        My name is {this.state.name}. I from {this.state.address}
+        My name is {this.state.name}. I'm {this.state.age}
+        <button
+          onClick={() => {
+            this.handleOnClick();
+          }}
+        >
+          Click me
+        </button>
       </div>
     );
   }
