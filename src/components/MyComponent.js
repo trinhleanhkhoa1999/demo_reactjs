@@ -6,16 +6,20 @@ import DisplayInfor from "./DisplayInfor";
 
 export default class MyComponent extends Component {
   state = {
-    name: "Khoa",
-    age: 23,
-    address: "Hoi dan it",
+    listUsers: [
+      { id: "1", name: "John", age: "20" },
+      { id: "2", name: "Eric", age: "26" },
+      { id: "3", name: "hari", age: "30" },
+    ],
   };
   render() {
-    const myInfor = ["ab", "bc", "de", "kd"];
+    //DRY: done repeat yourself
+    const { listUsers } = this.state;
+    console.log(listUsers);
     return (
       <div>
         <UserInfor />
-        <DisplayInfor name="Khoa trinh" age="23" myInfor={myInfor} />
+        <DisplayInfor listUsers={listUsers} />
       </div>
     );
   }
