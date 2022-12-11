@@ -8,25 +8,29 @@ export default class MyComponent extends Component {
     age: 23,
     address: "Hoi dan it",
   };
-  handleOnClick = () => {
-    console.log("  My name is ", this.state.name);
+  handleOnChange = (e) => {
+    console.log("check xem e.target co gi", e.target);
     this.setState({
-      name: "be bi",
-      age: Math.floor(Math.random() * 100 + 1),
+      // e.target.value lang nghe tu su kien onChange log ra. Roi lay e.target.value gang lai cho name
+      name: e.target.value,
     });
+    console.log(this.state);
+  };
+  handleSubmit = (e) => {
+    e.preventDefault(); // chong reload page
+    console.log("current state", this.state);
   };
   //JSX code javascript
   render() {
     return (
       <div>
-        My name is {this.state.name}. I'm {this.state.age}
-        <button
-          onClick={() => {
-            this.handleOnClick();
-          }}
-        >
-          Click me
-        </button>
+        <div>
+          My name is {this.state.name}. I'm {this.state.age}
+        </div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type="text" onChange={(e) => this.handleOnChange(e)} />
+          <button> Submit </button>
+        </form>
       </div>
     );
   }
