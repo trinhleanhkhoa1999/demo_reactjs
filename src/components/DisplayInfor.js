@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../App.css";
+import "./DisplayInfor.scss";
 
 export default class DisplayInfor extends Component {
   state = {
@@ -10,6 +10,10 @@ export default class DisplayInfor extends Component {
       showHide: !this.state.showHide,
     });
   };
+  // handleDeleteUser = (deleteUser) => {
+  //   console.log(deleteUser);
+  //   this.props.deleteUserInfor(deleteUser);
+  // };
 
   render() {
     const { listUsers } = this.props; // object
@@ -44,6 +48,9 @@ export default class DisplayInfor extends Component {
                         {index + 1} My name is {item.name}
                       </div>
                       <div>My age is {item.age}</div>
+                      <button onClick={() => this.props.deleteUserInfor(item)}>
+                        x
+                      </button>
                       <hr />
                     </div>
                   );

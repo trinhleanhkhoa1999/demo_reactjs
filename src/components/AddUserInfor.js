@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 
-export default class UserInfor extends Component {
+export default class AddUserInfor extends Component {
   state = {
-    name: "Khoa",
-    age: 23,
-    address: "Hoi dan it",
+    name: "vui long nhap name",
+    age: "vui long nhap age",
   };
   handleOnChangeName = (e) => {
-    console.log("check xem e.target co gi", e.target);
     this.setState({
       // e.target.value lang nghe tu su kien onChange log ra. Roi lay e.target.value gang lai cho name
       name: e.target.value,
     });
   };
   handleOnChangeAge = (e) => {
-    console.log("check xem e.target.value co gi", e.target.value);
+    // console.log("check xem e.target.value co gi", e.target.value);
     this.setState({
       age: e.target.value,
     });
@@ -22,6 +20,11 @@ export default class UserInfor extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); // chong reload page
     console.log("current state", this.state);
+    this.props.addUserInfor({
+      id: Math.floor(Math.random() * 100000 + 1) + "random",
+      name: this.state.name,
+      age: this.state.age,
+    });
   };
   //JSX code javascript
   render() {
