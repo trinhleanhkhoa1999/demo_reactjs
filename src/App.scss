@@ -7,18 +7,78 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+@media (min-width: 1450px){
+          .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+            max-width: 1400px !important;
+         }
+        }
 .app-container{
   .header-container{
-    .navbar-nav{
+    .navbar{
       z-index: 10;
-      opacity: 0.6;
-      .nav-link{
-        &.active{ //& co nghia la .nav-link cung cap voi active
-            color: red;
+      background-color: rgba(0,0,0,0) !important;
+      margin-top: 10px;
+        .btn-login {
+            height: 40px;
+            margin: 0px 15px;
+            padding: 0 15px;
+            border-radius: 5px;
+            border: 1px solid black;
+
+        }
+        .btn-signin {
+          height: 40px;
+          padding: 0 15px;
+          margin: 0 15px;
+          border-radius: 5px;
+          border: 1px solid black;
+          background: #403b3b;
+          color: white;
+          &:hover{
+            background: black;
+          }
+      }
+        .nav-link{
+          &.active{ //& co nghia la .nav-link cung cap voi active
+              color: red;
+          }
+        }
+        
+      }
+  }
+  .homepage-container{
+    width: 50%;
+    
+    .homepage-content{
+      position: relative;
+      padding: 0 75px;
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      .homepage-title{
+        font-size: 50px;
+        font-weight: 600;
+      }
+      .homepage-description{
+        font-size: 30px;
+      }
+      .homepage-btn{
+        button{
+          height: 40px;
+          padding: 0 15px;
+          border-radius: 5px;
+          border: 1px solid black;
+          background: #403b3b;
+          color: white;
+          &:hover{
+            background: black;
+          }
         }
       }
     }
   }
+  
 }
 video{
   position: fixed;
