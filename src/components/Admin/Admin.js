@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Admin = (props) => {
   const [collapsed, setCollapsed] = useState(false);
-
+  // collapsed thu nho thanh sidebar
   return (
     <div className="admin-container">
       <div className="admin-sidebar">
