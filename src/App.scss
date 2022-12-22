@@ -31,9 +31,9 @@ body {
           padding: 0 15px;
           margin: 0 15px;
           border-radius: 5px;
-          border: 1px solid black;
           background: #403b3b;
           color: white;
+          border: none;
           &:hover{
             background: black;
           }
@@ -68,9 +68,9 @@ body {
           height: 40px;
           padding: 0 15px;
           border-radius: 5px;
-          border: 1px solid black;
           background: #403b3b;
           color: white;
+          border: none;
           &:hover{
             background: black;
           }
