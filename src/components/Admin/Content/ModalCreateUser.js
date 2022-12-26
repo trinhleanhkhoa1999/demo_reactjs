@@ -3,11 +3,21 @@ import Modal from "react-bootstrap/Modal";
 import React, { useState } from "react";
 import "./ManageUser.scss";
 import { FcPlus } from "react-icons/fc";
+import axios from "axios";
 
 const ModalCreateUser = (props) => {
-  const [show, setShow] = useState(false);
+  const { show, setShow } = props;
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassword("");
+    setUserName("");
+    setRole("USER");
+    setPreviewImage("");
+    setImage("");
+  };
   const handleShow = () => setShow(true);
 
   const [email, setEmail] = useState("");
@@ -25,11 +35,37 @@ const ModalCreateUser = (props) => {
       // setPreviewImage("")
     }
   };
+  const handleSubmitCreateUser = async () => {
+    // validate
+
+    // call api cach thong thuong
+    // let data = {
+    //   email: email,
+    //   password: password,
+    //   username: userName,
+    //   role: role,
+    //   userImage: image,
+    // };
+
+    // call api: cach gui co File(vd:userImage) bang FORM DATA
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    data.append("username", userName);
+    data.append("role", role);
+    data.append("userImage", image);
+
+    let res = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      data
+    );
+    console.log(">>>> check res: ", res);
+  };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
-      </Button>
+      </Button> */}
 
       <Modal
         show={show}
@@ -52,7 +88,7 @@ const ModalCreateUser = (props) => {
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
-            <div classNameName="col-md-6">
+            <div className="col-md-6">
               <label className="form-label">Password</label>
               <input
                 type="password"
@@ -108,7 +144,7 @@ const ModalCreateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save
           </Button>
         </Modal.Footer>
