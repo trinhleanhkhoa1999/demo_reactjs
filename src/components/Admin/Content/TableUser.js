@@ -17,13 +17,14 @@ function TableUser() {
 
   return (
     <>
-      <table className="table">
+      <table className="table table-bordered table-hover">
         <thead>
           <tr>
             <th scope="col">Number</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,11 @@ function TableUser() {
                   <td>{item.username}</td>
                   <td>{item.email}</td>
                   <td>{item.role}</td>
+                  <td>
+                    <button className="btn btn-secondary">View</button>
+                    <button className="btn btn-warning mx-3">Update</button>
+                    <button className="btn btn-danger">Delete</button>
+                  </td>
                 </tr>
               );
             })}
