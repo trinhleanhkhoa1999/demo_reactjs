@@ -19,7 +19,6 @@ const ModalCreateUser = (props) => {
     setPreviewImage("");
     setImage("");
   };
-  const handleShow = () => setShow(true);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,7 +54,7 @@ const ModalCreateUser = (props) => {
       toast.error("Invalid password");
       return;
     }
-
+    // call api submit data
     let data = await postCreactNewUser(email, password, userName, role, image);
     console.log(">>>> check data: ", data);
     if (data && data.EC === 0) {

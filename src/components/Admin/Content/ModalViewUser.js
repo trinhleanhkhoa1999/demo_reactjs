@@ -7,14 +7,14 @@ import { toast } from "react-toastify";
 import { putUpdateUser } from "../../../services/apiServices";
 import _ from "lodash";
 
-const ModalUpdateUser = (props) => {
+const ModalViewUser = (props) => {
   const { show, setShow, dataUpdate } = props;
   // const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
     setEmail("");
-    setPassword("");
+    setPassword("******");
     setUserName("");
     setRole("USER");
     setPreviewImage("");
@@ -23,7 +23,7 @@ const ModalUpdateUser = (props) => {
   };
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("******");
   const [userName, setUserName] = useState("");
   const [role, setRole] = useState("USER");
   const [previewImage, setPreviewImage] = useState("");
@@ -69,7 +69,7 @@ const ModalUpdateUser = (props) => {
       return;
     }
 
-    let data = await putUpdateUser(dataUpdate.id, userName, role, image);
+    let data = await putUpdateUser(dataUpdate.id);
     console.log(">>>> check data: ", data);
     if (data && data.EC === 0) {
       toast.success(data.EM);
@@ -95,7 +95,7 @@ const ModalUpdateUser = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update a user</Modal.Title>
+          <Modal.Title>View a user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -125,6 +125,7 @@ const ModalUpdateUser = (props) => {
               <input
                 type="text"
                 className="form-control"
+                disabled
                 value={userName}
                 onChange={(event) => setUserName(event.target.value)}
               />
@@ -132,6 +133,7 @@ const ModalUpdateUser = (props) => {
             <div className="col-md-4">
               <label className="form-label">Role</label>
               <select
+                disabled
                 className="form-select"
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
@@ -147,6 +149,7 @@ const ModalUpdateUser = (props) => {
                 Upload file Image
               </label>
               <input
+                disabled
                 type="file"
                 id="labelUpload"
                 hidden
@@ -166,12 +169,9 @@ const ModalUpdateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save
-          </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 };
-export default ModalUpdateUser;
+export default ModalViewUser;
